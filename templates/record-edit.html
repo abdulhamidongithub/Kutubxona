@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Record-edit</title>
+</head>
+<body>
+    <h1>Recordni tahrirlang: </h1>
+    <br>
+    <form method="post" action="/record_edit/{{rec.id}}/">{% csrf_token %}
+        <input type="text" name="s" value="{{rec.student}}">
+        <input type="text" name="k" value="{{rec.kitob}}">
+        <input type="text" name="sana" value="{{rec.sana}}">
+        <input type="text" name="q" value="{{rec.qaytardi}}">
+        <input type="date" name="sana2" value="{{rec.qaytarish_sana}}">
+        <button type="submit">Saqlash</button>
+    </form>
+</body>
+</html>

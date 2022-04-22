@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Records</title>
+</head>
+<body>
+    <h1>Bizda bor recordlar ro'yhati: </h1>
+    <br>
+<!--    <form>-->
+<!--        <input name="qidirish" placeholder="Kitob nomi">-->
+<!--        <button>Qidirish</button>-->
+<!--    </form>-->
+    <br>
+    {% for i in recordlar %}
+    <h2>{{i}}</h2>
+    <h2>Qaytarildi: {{i.qaytardi}}</h2>
+    <button><a href="/record/{{i.id}}/">O'chirish</a></button>
+    {% if i.qaytardi == "Yo'q" %}
+    <button><a href="/record_edit/{{i.id}}/">Tahrirlash</a></button>
+    {% endif %}
+    {% endfor %}
+    <br>
+    <br>
+     <form method="post" action="/record/">{% csrf_token %}
+         <select name="k">
+            {% for i in books %}
+            <option value="{{i.id}}">{{i.nom}}</option>
+            {% endfor %}
+        </select>
+         <select name="s">
+            {% for i in students %}
+            <option value="{{i.id}}">{{i.ism}}</option>
+            {% endfor %}
+        </select>
+         <input type="date" name="sana">
+        <button type="submit"> Qo'shish </button>
+    </form>
+    <br>
+    <br>
+    <a href="/"><h2>Asosiyga qaytish</h2></a>
+    <br>
+</body>
+</html>

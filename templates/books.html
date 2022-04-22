@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+    <h1>Bizda bor kitoblar ro'yhati: </h1>
+    <br>
+    <form>
+        <input name="qidirish" placeholder="Kitob nomi">
+        <button>Qidirish</button>
+    </form>
+    <br>
+    {% for i in kitoblar %}
+    <h2>{{i}}</h2>
+    <button><a href="/kitob/{{i.id}}/">O'chirish</a></button>
+    <button><a href="/kitob_edit/{{i.id}}/">tahrirlash</a></button>
+    {% endfor %}
+    <br>
+    <br>
+    <form method="post" action="/kitoblar/">{% csrf_token %}
+        <input type="text" name="n" placeholder="Kitob nomi">
+        <input type="date" name="s" placeholder="Kitob sanasi">
+        <input type="number" name="sahifa" placeholder="Kitob sahifasi">
+        <input type="text" name="j" placeholder="Kitob janri">
+        <select name="m">
+            {% for i in avtorlar %}
+            <option value="{{i.id}}">{{i.ism}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit"> Qo'shish </button>
+    </form>
+    <br>
+    <br>
+    <a href="/"><h2>Asosiyga qaytish</h2></a>
+    <br>
+
+
+</body>
+</html>
