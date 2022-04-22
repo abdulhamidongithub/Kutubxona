@@ -14,5 +14,6 @@ urlpatterns = [
     path('record/', records),
     path('record_edit/<int:pk>/', record_edit),
     path('kitob_edit/<int:a>/', kitob_edit),
+    path('studentlar/', studentlar),
 ]
 

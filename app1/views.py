@@ -115,4 +115,7 @@ def record_edit(request, pk):
     r = Record.objects.get(id=pk)
     return render(request, "record-edit.html", {"rec":r})
 
+def studentlar(request):
+    s = Student.objects.all()
+    return render(request, 'students.html', {"studentlar":s})
 
